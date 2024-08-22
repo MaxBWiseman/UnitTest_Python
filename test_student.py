@@ -98,13 +98,54 @@ end_date = January 6, 2024 (370 days from start_date)
             schedule = self.student.course_schedule()
             self.assertEqual(schedule, "Success")
             
+    """
+Mocking requests.get:
+The patch function from the unittest.mock module is used to replace the requests.get method in the
+student module with a mock object (mocked_get).
+This allows the test to control the behavior of requests.get without making actual HTTP requests.
+
+Setting Mock Return Values:
+mocked_get.return_value.ok = True: This sets the ok attribute of the mock response to True, simulating
+a successful HTTP response.
+mocked_get.return_value.text = "Success": This sets the text attribute of the mock response to "Success",
+simulating the content of the HTTP response.
+
+Calling course_schedule:
+The course_schedule method of the student object is called, and its return value is stored in the schedule
+variable.
+Since requests.get is mocked, the course_schedule method will receive the mocked response.
+
+Assertion:
+self.assertEqual(schedule, "Success"): This asserts that the return value of course_schedule is "Success".
+If the assertion is true, the test passes. If not, the test fails.
+    """
+            
     def test_course_schedule_failed(self):
         print("test_course_schedule_failed")
         with patch("student.requests.get") as mocked_get:
             mocked_get.return_value.ok = False
             schedule = self.student.course_schedule()
             self.assertEqual(schedule, "Something went wrong with the request!")
-        
+    """
+Mocking requests.get:
+The patch function from the unittest.mock module is used to replace the requests.get method in the student
+module with a mock object (mocked_get).
+This allows the test to control the behavior of requests.get without making actual HTTP requests.
+
+Setting Mock Return Values:
+mocked_get.return_value.ok = False: This sets the ok attribute of the mock response to False, simulating
+a failed HTTP response.
+
+Calling course_schedule:
+The course_schedule method of the student object is called, and its return value is stored in the schedule
+variable.
+Since requests.get is mocked, the course_schedule method will receive the mocked response.
+
+Assertion:
+self.assertEqual(schedule, "Something went wrong with the request!"): This asserts that the return value
+of course_schedule is "Something went wrong with the request!".
+If the assertion is true, the test passes. If not, the test fails.     
+    """
 if __name__ == "__main__":
     unittest.main()
 #This block ensures that the tests are run when the script is executed directly.

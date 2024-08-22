@@ -68,3 +68,21 @@ it by the specified number of days.
             return response.text
         else:
             return "Something went wrong with the request!"
+    """
+This mocks a API request to a course schedule website.
+
+HTTP GET Request:
+The method constructs a URL using the student's first and last names:
+f"http://company.com/course-schedule/{self.first_name}/{self.last_name}".
+It then makes an HTTP GET request to this URL using the requests.get method from the requests library.
+The response from this request is stored in the response variable.
+
+Check Response Status:
+The method checks if the request was successful by evaluating response.ok.
+response.ok is a boolean attribute that is True if the HTTP status code is less than 400, indicating
+a successful request.
+
+Return Response Text or Error Message:
+If response.ok is True, the method returns the text content of the response using response.text.
+If response.ok is False, the method returns the string "Something went wrong with the request!".     
+    """
