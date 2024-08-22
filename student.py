@@ -32,6 +32,7 @@ self.naughty_list: Initializes the naughty_list attribute to False.
     Defines a read-only property email that returns the email address of the student
     in the format firstname.lastname@email.com, with both names in lowercase.
     """
+    
 #Read-only properties cannot be modified directly.
 # Attempting to set these properties will raise an AttributeError
 # student.full_name = "Jane Doe"  # This will raise an error
