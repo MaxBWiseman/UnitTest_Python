@@ -1,5 +1,6 @@
 import unittest
 from student import Student
+from datetime import timedelta
 
 class TestStudent(unittest.TestCase):
 # TestStudent: A subclass of unittest.TestCase, which provides various methods to
@@ -68,6 +69,25 @@ self.assertTrue: Asserts (makes sure) that self.student.naughty_list is True.
         self.assertEqual(self.student.email,"john.doe@email.com")
 # This method tests the email property of the Student class.
 # self.assertEqual: Asserts (makes sure) that self.student.email is equal to "john.doe@email.com".
+
+    def test_apply_extension(self):
+        print("test_apply_extension")
+        self.student.apply_extension(5)
+        self.assertEqual(self.student.end_date, self.student.start_date + timedelta(days=370))
+    """
+When a Student object is instantiated, its start_date is set to the current date, and its end_date is set
+to one year (365 days) from the current date.
+The apply_extension method adds 5 days to the end_date.
+Therefore, the end_date should now be 370 days from the start_date (365 initial days + 5 additional days).
+The assertion checks if this is true, ensuring that the apply_extension method works correctly.
+
+Example: 
+Assume today's date is January 1, 2023:
+start_date = January 1, 2023
+end_date = January 1, 2024 (365 days from start_date)
+After calling apply_extension(5):
+end_date = January 6, 2024 (370 days from start_date)
+    """
         
 if __name__ == "__main__":
     unittest.main()

@@ -44,3 +44,7 @@ self.naughty_list: Initializes the naughty_list attribute to False.
     """
     Defines a method alert_santa that sets the naughty_list attribute to True and returns its value.
     """
+    
+    def apply_extension(self, days):
+        self.end_date += timedelta(days=days)
+        
