@@ -1,6 +1,7 @@
 import unittest
 from student import Student
 from datetime import timedelta
+from unittest.mock import patch
 
 class TestStudent(unittest.TestCase):
 # TestStudent: A subclass of unittest.TestCase, which provides various methods to
@@ -88,6 +89,21 @@ end_date = January 1, 2024 (365 days from start_date)
 After calling apply_extension(5):
 end_date = January 6, 2024 (370 days from start_date)
     """
+    
+    def test_course_schedule_success(self):
+        print("test_course_schedule_seccess")
+        with patch("student.requests.get") as mocked_get:
+            mocked_get.return_value.ok = True
+            mocked_get.return_value.text = "Success"
+            schedule = self.student.course_schedule()
+            self.assertEqual(schedule, "Success")
+            
+    def test_course_schedule_failed(self):
+        print("test_course_schedule_failed")
+        with patch("student.requests.get") as mocked_get:
+            mocked_get.return_value.ok = False
+            schedule = self.student.course_schedule()
+            self.assertEqual(schedule, "Something went wrong with the request!")
         
 if __name__ == "__main__":
     unittest.main()

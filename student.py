@@ -1,4 +1,5 @@
 from datetime import date, timedelta
+import requests
 
 class Student:
     # A student class as a base for method testing
@@ -59,4 +60,11 @@ duration representing the number of days specified by the days parameter.
 
 Adding timedelta to end_date: The timedelta object is added to the end_date, effectively extending
 it by the specified number of days. 
-    """    
+    """
+    
+    def course_schedule(self):
+        response = requests.get(f"http://company.com/course-schedule/{self.first_name}/{self.last_name}")
+        if response.ok:
+            return response.text
+        else:
+            return "Something went wrong with the request!"
