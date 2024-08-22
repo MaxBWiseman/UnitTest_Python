@@ -47,4 +47,16 @@ self.naughty_list: Initializes the naughty_list attribute to False.
     
     def apply_extension(self, days):
         self.end_date += timedelta(days=days)
-        
+    """
+Method Definition: The method apply_extension is defined with two parameters: self and days.
+self refers to the instance of the class to which this method belongs.
+days is the number of days by which the end_date should be extended.
+
+Accessing end_date: The method accesses the end_date attribute of the instance (self.end_date).
+
+Using timedelta: The method uses the timedelta class from the datetime module to create a time
+duration representing the number of days specified by the days parameter.
+
+Adding timedelta to end_date: The timedelta object is added to the end_date, effectively extending
+it by the specified number of days. 
+    """    
